@@ -47,16 +47,22 @@ function parseBody(object, callback) {
   });
 }
 
-function postToGithub(body){
+function postToGithub(body) {
   var options = {
-      host: 'api.github.com',
-      path: '/repos/kat4/meow/issues',
-      headers: {
-       'Authorization': 'Basic ' + new Buffer(body.username + ':' + body.password).toString('base64')
-     }
+    host: 'api.github.com',
+    path: '/repos/mantagen/postgithubissue/issues',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0',
+      'Authorization': 'Basic ' + new Buffer(body.username + ':' + body.password).toString('base64')
+    },
+    method: 'POST'
   };
-  var reqToGithub = https.request(options,function(res){
-    parseBody(res,function(){
+  body = {
+    title: body.title,
+    body: body.body
+  };
+  var reqToGithub = https.request(options, function(res) {
+    parseBody(res, function(body) {
       console.log(body);
     });
   });
