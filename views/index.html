@@ -6,15 +6,15 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <form action="/raiseissue">
+  <form action="/raiseissue" method="post">
     <label for="username">Username</label>
     <input type="text" name='username'>
     <label for="Password">Password</label>
     <input type="password" name='password'>
     <label for="title">Issue title</label>
     <input type="text" name='title'>
-    <label for="description">Issue description</label>
-    <textarea name='description' id="" cols="30" rows="10"></textarea>
+    <label for="body">Issue description</label>
+    <textarea name='body' id="" cols="30" rows="10"></textarea>
     <input type='submit' value='Post issue' >
   </form>
 </body>
